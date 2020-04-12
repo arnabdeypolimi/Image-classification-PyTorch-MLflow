@@ -14,6 +14,29 @@ This repository only contain the code for training the models. Data pre-processi
         ├── Val               
             ├── Class Name             
                   ├── Sample name 
-
+```
+root
+└── dataset
+        ├── Train
+        │   ├── Class 1
+        │   │   ├── Sample 1
+        │   │   ├── .........
+        │   │   └── Sample N
+        │   ├── ........
+        │   └── Class N
+        │       ├── Sample 1
+        │       ├── .........
+        │       └── Sample N
+        └── Val
+            ├── Class 1
+            │   ├── Sample 1
+            │   ├── .........
+            │   └── Sample N
+            ├── ........
+            └── Class N
+                ├── Sample 1
+                ├── .........
+                └── Sample N
+```
 
 
