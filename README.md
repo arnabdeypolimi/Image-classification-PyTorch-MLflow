@@ -6,14 +6,6 @@ This code has features like MLflow, Confustion matrix generation, and Model savi
 This repository only contain the code for training the models. Data pre-processing and dataset creation code is not present in the repository but can be added in future on request. 
 
 ## Dataset folder structure should be:
-    .
-    ├── dataset        
-        ├── Train            
-            ├── Class Name             
-                  ├── Sample name            
-        ├── Val               
-            ├── Class Name             
-                  ├── Sample name 
 ```
 root
 └── dataset
