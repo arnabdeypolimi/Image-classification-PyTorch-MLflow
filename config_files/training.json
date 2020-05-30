@@ -1,0 +1,12 @@
+{
+  "model_name": [
+    "squeezenet"
+  ],
+  "num_classes": "17",
+  "batch_size": "32",
+  "num_epochs": "50",
+  "feature_extract": "False",
+  "pre_trained": "False",
+  "save_model": "/exp/data/models/",
+  "save_confusion_mat": "/exp/data/densenet_17_mat.csv"
+}
