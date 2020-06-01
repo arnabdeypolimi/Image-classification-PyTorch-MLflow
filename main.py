@@ -20,8 +20,10 @@ def main(argv):
          config_file = arg
    print('config file name: '+config_file)
 
+
    config = ConfigurationManager.from_file(config_file)
 
+   # prepare the dataset for training
    dataloaders_dict = Helper.dataloader(Helper.input_size(config.model_name), config.data_dir, batch_size=config.batch_size)
 
    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
