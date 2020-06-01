@@ -22,7 +22,7 @@ def main(argv):
 
    config = ConfigurationManager.from_file(config_file)
 
-   dataloaders_dict = Helper.dataloader(config.input_size, config.data_dir, config.batch_size)
+   dataloaders_dict = Helper.dataloader(Helper.input_size(config.model_name), config.data_dir, batch_size=config.batch_size)
 
    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 

@@ -177,7 +177,7 @@ class Helper():
 
         return model_ft, input_size
 
-    def dataloader(self, input_size, data_dir, batch_size):
+    def dataloader(input_size, data_dir, batch_size):
         data_transforms = {
             'train': transforms.Compose([
                 transforms.Resize(input_size),
@@ -220,3 +220,10 @@ class Helper():
         mlflow.log_param('epochs', config.num_epochs)
         mlflow.log_param('feature extracted', config.feature_extract)
         mlflow.log_param('pre-trained', config.pre_trained)
+
+    def input_size( name):
+        if name=='inception':
+            size=299
+        else:
+            size=224
+        return size

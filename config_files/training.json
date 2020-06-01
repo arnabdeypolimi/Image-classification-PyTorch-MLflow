@@ -8,5 +8,6 @@
   "feature_extract": "False",
   "pre_trained": "False",
   "save_model": "/exp/data/models/",
-  "save_confusion_mat": "/exp/data/densenet_17_mat.csv"
+  "save_confusion_mat": "/exp/data/densenet_17_mat.csv",
+  "data_dir":"/data/"
 }

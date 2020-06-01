@@ -51,3 +51,7 @@ class ConfigurationManager:
     @property
     def save_confusion_mat(self):
         return self.config.get('save_confusion_mat', '')
+
+    @property
+    def data_dir(self):
+        return self.config.get('data_dir', '')
