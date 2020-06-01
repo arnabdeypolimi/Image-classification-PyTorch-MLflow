@@ -48,6 +48,11 @@ this case which can be seen later.
 - The MLflow Tracking UI will show runs logged in `./mlruns` at [http://localhost:5000](http://localhost:5000). Start it with:
 `mlflow ui`
 
+## Run as Docker Container 
+
+- `sudo docker build -t classification:0.1 .`
+- `sudo docker run -it --rm classification:0.1`
+
 ## TODO:
 - add Docker file 
 - add Requirements
