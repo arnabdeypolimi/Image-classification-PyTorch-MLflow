@@ -50,7 +50,9 @@ this case which can be seen later.
 
 ## Run as Docker Container 
 
+Create docker image 
 - `sudo docker build -t classification:0.1 .`
+Run Docker container
 - `sudo docker run -it --rm classification:0.1`
 
 ## TODO:
