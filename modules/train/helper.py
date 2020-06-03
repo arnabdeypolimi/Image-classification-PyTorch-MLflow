@@ -25,15 +25,15 @@ class Helper():
             for param in model.parameters():
                 param.requires_grad = False
 
-    def train_model(self, model, dataloaders, criterion, optimizer, device, num_epochs=25, is_inception=False):
+    def train_model(self, model, dataloaders, criterion, optimizer, device, is_inception=False):
         since = time.time()
         val_acc_history = []
 
         best_model_wts = copy.deepcopy(model.state_dict())
         best_acc = 0.0
 
-        for epoch in range(num_epochs):
-            print('Epoch {}/{}'.format(epoch, num_epochs - 1))
+        for epoch in range(self.config.num_epochs):
+            print('Epoch {}/{}'.format(epoch, self.config.num_epochs - 1))
             print('-' * 10)
 
             # Each epoch has a training and validation phase
@@ -119,8 +119,8 @@ class Helper():
         if self.config.model_name == "resnet":
             """ resnet152
             """
-            model_ft = models.resnet152(pretrained=self.config.use_pretrained)
-            self.set_parameter_requires_grad(model_ft, self.config.feature_extract)
+            model_ft = models.resnet152(pretrained=self.config.pre_trained)
+            self.set_parameter_requires_grad(model_ft)
             num_ftrs = model_ft.fc.in_features
             model_ft.fc = nn.Linear(num_ftrs, self.config.num_classes)
             input_size = 224
@@ -128,8 +128,8 @@ class Helper():
         elif self.config.model_name == "alexnet":
             """ Alexnet
             """
-            model_ft = models.alexnet(pretrained= self.config.use_pretrained)
-            self.set_parameter_requires_grad(model_ft, self.config.feature_extract)
+            model_ft = models.alexnet(pretrained= self.config.pre_trained)
+            self.set_parameter_requires_grad(model_ft)
             num_ftrs = model_ft.classifier[6].in_features
             model_ft.classifier[6] = nn.Linear(num_ftrs, self.config.num_classes)
             input_size = 224
@@ -137,8 +137,8 @@ class Helper():
         elif self.config.model_name == "vgg16":
             """ VGG16_bn
             """
-            model_ft = models.vgg16(pretrained=self.config.use_pretrained)
-            self.set_parameter_requires_grad(model_ft, self.config.feature_extract)
+            model_ft = models.vgg16(pretrained=self.config.pre_trained)
+            self.set_parameter_requires_grad(model_ft)
             num_ftrs = model_ft.classifier[6].in_features
             model_ft.classifier[6] = nn.Linear(num_ftrs,  self.config.num_classes)
             input_size = 224
@@ -146,8 +146,8 @@ class Helper():
         elif  self.config.model_name == "squeezenet":
             """ Squeezenet
             """
-            model_ft = models.squeezenet1_0(pretrained= self.config.use_pretrained)
-            self.set_parameter_requires_grad(model_ft, self.config.feature_extract)
+            model_ft = models.squeezenet1_0(pretrained= self.config.pre_trained)
+            self.set_parameter_requires_grad(model_ft)
             model_ft.classifier[1] = nn.Conv2d(512,  self.config.num_classes, kernel_size=(1, 1), stride=(1, 1))
             model_ft.num_classes =  self.config.num_classes
             input_size = 224
@@ -155,8 +155,8 @@ class Helper():
         elif  self.config.model_name == "densenet":
             """ Densenet201
             """
-            model_ft = models.densenet201(pretrained= self.config.use_pretrained)
-            self.set_parameter_requires_grad(model_ft, self.config.feature_extract)
+            model_ft = models.densenet201(pretrained= self.config.pre_trained)
+            self.set_parameter_requires_grad(model_ft)
             num_ftrs = model_ft.classifier.in_features
             model_ft.classifier = nn.Linear(num_ftrs, self.config.num_classes)
             input_size = 224
@@ -165,8 +165,8 @@ class Helper():
             """ Inception v3 
             Be careful, expects (299,299) sized images and has auxiliary output
             """
-            model_ft = models.inception_v3(pretrained= self.config.use_pretrained)
-            self.set_parameter_requires_grad(model_ft, self.config.feature_extract)
+            model_ft = models.inception_v3(pretrained= self.config.pre_trained)
+            self.set_parameter_requires_grad(model_ft)
             # Handle the auxilary net
             num_ftrs = model_ft.AuxLogits.fc.in_features
             model_ft.AuxLogits.fc = nn.Linear(num_ftrs, self.config.num_classes)

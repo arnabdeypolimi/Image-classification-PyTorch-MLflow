@@ -52,7 +52,7 @@ class Train():
             criterion = nn.CrossEntropyLoss()
 
             # Train and evaluate
-            model_ft, hist = Helper.train_model(model_ft, dataloaders_dict, criterion, optimizer_ft, num_epochs=config.num_epochs,
+            model_ft, hist = self.helper.train_model(model_ft, dataloaders_dict, criterion, optimizer_ft, device=device,
                                          is_inception=(self.config.model_name == "inception"))
             print("Training complete")
 
