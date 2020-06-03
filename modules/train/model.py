@@ -7,13 +7,13 @@ import mlflow
 import mlflow.pytorch
 
 
-class Train():
+class Model():
 
     def __init__(self,config):
         self.config=config
         self.helper=Helper(config)
 
-    def run_training(self, dataloaders_dict, device):
+    def train(self, dataloaders_dict, device):
 
         model_ft, input_size = self.helper.initialize_model()
 

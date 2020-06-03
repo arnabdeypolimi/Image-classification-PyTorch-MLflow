@@ -30,10 +30,26 @@ root
                 ├── .........
                 └── Sample N
 ```
+## Config File
+It is a json file where we will add all the parameters and paths required for training 
+```
+{
+  "model_name":"<squeezenet/resnet/vgg16/densenet/alexnet/inception>", 
+  "num_classes": "<number of classes>",
+  "batch_size": "32",
+  "num_epochs": "<number of epoches>",
+  "feature_extract": "False",
+  "pre_trained": "True",
+  "save_model": "<path to save model>",
+  "save_confusion_mat": "/exp/data/densenet_17_mat.csv",
+  "data_dir":"<path of the dataset>"
+}
+
+```
 
 ## Training steps 
 
-- set the parameters and paths in the code according to your need 
+- edit the `config_files/training.json` 
 - after finshing the training it will create confusion matrix 
 - the notebook will also save trained model with `pytorch` and `mlflow`  
     

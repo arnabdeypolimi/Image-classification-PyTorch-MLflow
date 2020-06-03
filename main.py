@@ -1,6 +1,6 @@
 from modules.config.config_manager import ConfigurationManager
 import sys, getopt
-from modules.train.train import Train
+from modules.train.model import Model
 from modules.evaluation.matrix import Matrix
 from modules.train.helper import Helper
 import torch
@@ -29,8 +29,8 @@ def main(argv):
 
    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-   train=Train(config)
-   model_ft=train.run_training(dataloaders_dict, device)
+   model=Model(config)
+   model_ft=model.train(dataloaders_dict, device)
 
    Matrix.create_matrix(config,dataloaders_dict,device,model_ft)
 
