@@ -22,13 +22,15 @@ def main(argv):
 
 
    config = ConfigurationManager.from_file(config_file)
+   helper=Helper(config)
 
    # prepare the dataset for training
-   dataloaders_dict = Helper.dataloader(Helper.input_size(config.model_name), config.data_dir, batch_size=config.batch_size)
+   dataloaders_dict = helper.dataloader(helper.input_size())
 
    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-   model_ft=Train.run_training(config, dataloaders_dict,device)
+   train=Train(config)
+   model_ft=train.run_training(dataloaders_dict, device)
 
    Matrix.create_matrix(config,dataloaders_dict,device,model_ft)
 

@@ -9,11 +9,13 @@ import mlflow.pytorch
 
 class Train():
 
+    def __init__(self,config):
+        self.config=config
+        self.helper=Helper(config)
 
-    def run_training(self, config, dataloaders_dict, device):
+    def run_training(self, dataloaders_dict, device):
 
-        model_ft, input_size = Helper.initialize_model(config.model_name, config.num_classes, config.feature_extract,
-                                                       use_pretrained=config.pre_trained)
+        model_ft, input_size = self.helper.initialize_model()
 
         # Print the model we just instantiated
         print(model_ft)
@@ -29,7 +31,7 @@ class Train():
         #  is True.
         params_to_update = model_ft.parameters()
         print("Params to learn:")
-        if config.feature_extract:
+        if self.config.feature_extract:
             params_to_update = []
             for name, param in model_ft.named_parameters():
                 if param.requires_grad == True:
@@ -44,17 +46,17 @@ class Train():
         optimizer_ft = optim.SGD(params_to_update, lr=0.001, momentum=0.9)
 
         with mlflow.start_run() as run:
-            Helper.mlflow_log(config)
+            self.helper.mlflow_log()
 
             # Setup the loss fxn
             criterion = nn.CrossEntropyLoss()
 
             # Train and evaluate
             model_ft, hist = Helper.train_model(model_ft, dataloaders_dict, criterion, optimizer_ft, num_epochs=config.num_epochs,
-                                         is_inception=(config.model_name == "inception"))
+                                         is_inception=(self.config.model_name == "inception"))
             print("Training complete")
 
-        Helper.save_model(model_ft, config.model_name, config.save_model)
+        self.helper.save_model(model_ft)
 
         print("Model saved")
 
