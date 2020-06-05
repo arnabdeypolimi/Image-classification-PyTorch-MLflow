@@ -7,5 +7,7 @@
   "pre_trained": "True",
   "save_model": "/exp/data/models/",
   "save_confusion_mat": "/exp/data/densenet_17_mat.csv",
-  "data_dir":"./data/"
+  "data_dir":"./data/",
+  "classes": ["A008", "A009", "A022", "A023", "A027", "A028", "A029", "A031", "A032", "A033", "A052", "A041", "A043",
+               "A045", "A048", "A050", "A051"]
 }

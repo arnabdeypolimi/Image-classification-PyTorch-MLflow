@@ -55,3 +55,7 @@ class ConfigurationManager:
     @property
     def data_dir(self):
         return self.config.get('data_dir', '')
+
+    @property
+    def classes(self):
+        return  self.config.get('classes', '')

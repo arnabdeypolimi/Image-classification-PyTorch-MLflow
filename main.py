@@ -1,7 +1,7 @@
 from modules.config.config_manager import ConfigurationManager
 import sys, getopt
 from modules.train.model import Model
-from modules.evaluation.matrix import Matrix
+from modules.evaluation.evaluation import Evaluation
 from modules.train.helper import Helper
 import torch
 
@@ -32,7 +32,8 @@ def main(argv):
    model=Model(config)
    model_ft=model.train(dataloaders_dict, device)
 
-   Matrix.create_matrix(config,dataloaders_dict,device,model_ft)
+   evaluation=Evaluation(config)
+   confusion_mat=evaluation.generate_confusion_matrix(dataloaders_dict, device, model_ft)
 
 if __name__ == "__main__":
    main(sys.argv[1:])
