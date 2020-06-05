@@ -5,5 +5,12 @@ opencv-python
 pillow
 scikit-image
 slidingwindow
-
+matplotlib
+pandas
+scipy
+matplotlib
+seaborn
+torch
+torchvision
+pytest
 
