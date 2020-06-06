@@ -217,6 +217,7 @@ class Helper():
         torch.save(model_ft.state_dict(), self.config.save_model + self.config.model_name + "/" + str(date.today()) + '.pth')
 
     def mlflow_log(self):
+        """ log parameter with MLflow """
         mlflow.log_param('dataset', self.config.data_dir)
         mlflow.log_param('model name', self.config.model_name)
         mlflow.log_param('number of classes', self.config.num_classes)
@@ -226,6 +227,9 @@ class Helper():
         mlflow.log_param('pre-trained', self.config.pre_trained)
 
     def input_size(self):
+        """
+        :return: returns input size of a particular model
+        """
         if self.config.model_name=='inception':
             size=299
         else:

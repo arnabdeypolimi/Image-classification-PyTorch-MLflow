@@ -5,6 +5,8 @@ This code has added features like `MLflow`, Confustion matrix generation, predic
 
 This repository only contain the code for training the models. Data pre-processing and dataset creation code is not present in this repository but can be added in future on request. 
 
+Datasets can be trained with `VGG, SqueezeNet, DenseNet, ResNet, AlexNet, Inception` using this repository. 
+
 ## Dataset folder structure should be:
 ```
 root

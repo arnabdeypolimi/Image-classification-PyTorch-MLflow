@@ -14,12 +14,18 @@ class Model():
         self.helper=Helper(config)
 
     def train(self, dataloaders_dict, device):
+        """
+        Start training of the model and return trained model
+
+        :param dataloaders_dict: dataloader object
+        :param device: torch device
+        :return: trained model
+        """
 
         model_ft, input_size = self.helper.initialize_model()
 
         # Print the model we just instantiated
         print(model_ft)
-
 
         # Send the model to GPU
         model_ft = model_ft.to(device)

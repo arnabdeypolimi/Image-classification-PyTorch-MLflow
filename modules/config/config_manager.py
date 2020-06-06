@@ -13,6 +13,11 @@ class ConfigurationManager:
 
     @classmethod
     def from_file(cls, name):
+        """
+        This method return config object by loading the json file
+        :param name: config file name without extension
+        :return: config object
+        """
         if not name.endswith('.json'):
             name = name + ".json"
 
@@ -21,11 +26,12 @@ class ConfigurationManager:
 
     @property
     def model_name(self):
+        """:return: model name"""
         return self.config.get('model_name', '')
 
     @property
     def num_classes(self):
-        # todo: use some library to take into account different ways to write a country language
+        """number of classes"""
         return int(self.config.get('num_classes', "17"))
 
     @property
