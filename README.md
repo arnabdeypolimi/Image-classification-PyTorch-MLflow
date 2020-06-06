@@ -1,6 +1,6 @@
 # Image-classification-PyTorch-MLflow
 
-The repository contain code for image classification using `PyTorch`. I have also used `MLflow` to track the experiments. The code is a modified version of the PyTorch [fine-tune](https://pytorch.org/tutorials/beginner/finetuning_torchvision_models_tutorial.html) tutorial.
+The repository contain code for image classification using `PyTorch`. I have also used `MLflow` to track the experiments. 
 This code has added features like `MLflow`, Confustion matrix generation, prediction and model saving.
 
 This repository only contain the code for training the models. Data pre-processing and dataset creation code is not present in this repository but can be added in future on request. 
@@ -42,7 +42,8 @@ It is a json file where we will add all the parameters and paths required for tr
   "pre_trained": "True",
   "save_model": "<path to save model>",
   "save_confusion_mat": "/exp/data/densenet_17_mat.csv",
-  "data_dir":"<path of the dataset>"
+  "data_dir":"<path of the dataset>",
+  "classes": [<list of class names>]
 }
 
 ```
@@ -50,6 +51,7 @@ It is a json file where we will add all the parameters and paths required for tr
 ## Training steps 
 
 - edit the `config_files/training.json` 
+- run `python main.py --config training`
 - after finshing the training it will create confusion matrix 
 - the notebook will also save trained model with `pytorch` and `mlflow`  
     
@@ -67,10 +69,8 @@ this case which can be seen later.
 ## Run as Docker Container 
 
 - `sudo docker build -t classification:0.1 .`
-- `sudo docker run -it --rm classification:0.1`
-
-## TODO:
-- add Docker file 
-- add Requirements
-- add data processing code
-- add dataset creation code
+- `sudo docker run -it --rm -p 5000:5000 classification:0.1`
+- `cd code`
+- `python main.py --config training`
+- `mlflow server --host=0.0.0.0`
+- `http://localhost:5000/`

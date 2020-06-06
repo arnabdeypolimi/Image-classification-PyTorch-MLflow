@@ -13,4 +13,4 @@ seaborn
 torch
 torchvision
 pytest
-
+mlflow
