@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 ENV LC_ALL=C
-RUN apt-get update -y && apt-get install -y python3-pip python3-dev build-essential tesseract-ocr poppler-utils libsm6 libxext6 libxrender-dev libtesseract-dev libleptonica-dev pkg-config
+RUN apt-get update -y && apt-get install -y python3-pip python3-dev build-essential pkg-config
 
 # Install extras
 #COPY requirements.yml /requirements.yml
