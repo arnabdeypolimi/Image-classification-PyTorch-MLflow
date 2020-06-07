@@ -33,7 +33,9 @@ root
                 └── Sample N
 ```
 ## Config File
-It is a json file where we will add all the parameters and paths required for training 
+It is a json file where we will add all the parameters and paths required for training.
+model_name input is the name of the model you wish to use and must be selected from this list:[resnet, alexnet, vgg, squeezenet, densenet, inception]
+num_classes is the number of classes in the dataset, batch_size is the batch size used for training and may be adjusted according to the capability of your machine, num_epochs is the number of training epochs we want to run, and feature_extract is a boolean that defines if we are finetuning or feature extracting. If feature_extract = False, the model is finetuned and all model parameters are updated. If feature_extract = True, only the last layer parameters are updated, the others remain fixed.
 ```
 {
   "model_name":"<squeezenet/resnet/vgg16/densenet/alexnet/inception>", 
