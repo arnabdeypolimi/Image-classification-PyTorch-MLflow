@@ -73,7 +73,7 @@ this case which can be seen later.
 ## Run as Docker Container 
 
 - `sudo docker build -t classification:0.1 .`
-- `sudo docker run -it --rm -p 5000:5000 classification:0.1`
+- `sudo docker run -it --rm -p 5000:5000 -v <dataset path>:/code/data/ classification:0.1`
 - `cd code`
 - `python main.py --config training`
 - `mlflow server --host=0.0.0.0`
